@@ -1,0 +1,5 @@
+<section class="entry clearfix hentry">
+    <h1 class="entry-title"><a href="[% uri_for('entry/' _ entry.moniker _ '.html') %]">[% entry.title %]</a></h1>
+    <div class="entry-content">[% entry.html %]</div>
+    <span class="updated mtime"><a class="bookmark" rel="bookmark" href="[% uri_for('entry/' _ entry.moniker _ '.html') %]">[% entry.mtime_piece.strftime('%Y-%m-%d(%a) %H:%M') %]</a></span>
+</section>

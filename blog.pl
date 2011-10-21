@@ -11,6 +11,9 @@ use autodie ':all';
 use File::stat;
 use List::UtilsBy qw(nsort_by);
 use Log::Minimal;
+use File::Basename qw(basename);
+
+our $CURRENT_TMPL;
 
 has xslate => (
     is => 'rw',
@@ -20,6 +23,12 @@ has xslate => (
             module => ['Text::Xslate::Bridge::TT2Like'],
             path => ['tmpl'],
             cache => 0,
+            function => {
+                uri_for => sub {
+                    my $u = shift;
+                    $CURRENT_TMPL eq 'entry.tt' ? "../$u" : $u;
+                }
+            },
         );
     },
 );
@@ -49,6 +58,9 @@ sub run {
 
     my @files = nsort_by { $_->ctime } map { Entry->new(file => $_) } glob('_source/*.txt');
 
+    for (@files) {
+        $self->render_entry($_);
+    }
     $self->render_index([grep { $_ } @files[0..10]]);
     # TODO: rss
     # TODO: entry page
@@ -59,9 +71,17 @@ sub render_index {
     $self->render('index.html', 'index.tt', { entries => $entries, c => $self });
 }
 
+sub render_entry {
+    my ($self, $entry) = @_;
+    my $dst = $entry->moniker;
+    $self->render( "entry/${dst}.html", 'entry.tt',
+        { entry => $entry, c => $self } );
+}
+
 sub render {
     my ($self, $dest, $tmpl, $params) = @_;
     infof("rendering $dest");
+    local $CURRENT_TMPL = $tmpl;
     my $html = $self->xslate->render($tmpl, $params);
     open my $fh, '>:utf8', $dest;
     print {$fh} $html;
@@ -76,6 +96,7 @@ use File::stat;
 use Text::Xslate qw(mark_raw);
 use Log::Minimal;
 use Time::Piece;
+use File::Basename qw(basename);
 
 has file => (
     is       => 'ro',
@@ -110,6 +131,18 @@ has content => (
 has title => (
     is => 'rw',
     isa => 'Str',
+);
+
+has moniker => (
+    is => 'rw',
+    isa => 'Str',
+    lazy => 1,
+    default => sub {
+        my $self = shift;
+        my $dst = basename($self->file);
+        $dst =~ s/\..+//;
+        return $dst;
+    }
 );
 
 use Text::Xatena::Node::SuperPre;

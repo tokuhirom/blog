@@ -1,0 +1,5 @@
+[% WRAPPER '_layout.tt' %]
+
+    [% INCLUDE '_entry.tt' WITH entry=entry %]
+
+[% END %]
