@@ -19,6 +19,7 @@ has xslate => (
             syntax => 'TTerse',
             module => ['Text::Xslate::Bridge::TT2Like'],
             path => ['tmpl'],
+            cache => 0,
         );
     },
 );
@@ -39,7 +40,7 @@ has title => (
 );
 
 sub git_mtime {
-    system(q[git log --name-only --date=iso --reverse --pretty=format:%at "$@" | perl -00ln -e '($d,@f)=split/\n/;$d{$_}=$d for grep{-e}@f' -e '}{utime undef,$d{$_},$_ for keys%d']);
+    # system(q[git log --name-only --date=iso --reverse --pretty=format:%at "$@" | perl -00ln -e '($d,@f)=split/\n/;$d{$_}=$d for grep{-e $_ && m{^_source}}@f' -e '}{utime undef,$d{$_},$_ for keys%d']);
 }
 
 sub run {
@@ -64,6 +65,7 @@ sub render {
     my $html = $self->xslate->render($tmpl, $params);
     open my $fh, '>:utf8', $dest;
     print {$fh} $html;
+    close $fh;
 }
 
 package Entry;
@@ -73,6 +75,7 @@ use autodie;
 use File::stat;
 use Text::Xslate qw(mark_raw);
 use Log::Minimal;
+use Time::Piece;
 
 has file => (
     is       => 'ro',
@@ -91,6 +94,14 @@ for my $meth (qw(mtime ctime)) {
     );
 }
 
+has mtime_piece => (
+    is => 'ro',
+    default => sub {
+        Time::Piece->new(shift->mtime)
+    },
+    lazy => 1,
+);
+
 has content => (
     is => 'rw',
     isa => 'Str',
@@ -101,13 +112,16 @@ has title => (
     isa => 'Str',
 );
 
+use Text::Xatena::Node::SuperPre;
 has html => (
     is => 'ro',
     lazy => 1,
     default => sub {
         my $self = shift;
+        local $Text::Xatena::Node::SuperPre::SUPERPRE_CLASS_NAME = 'prettyprint';
         my $xatena = Text::Xatena->new();
-        mark_raw($xatena->format($self->content));
+        my $html = $xatena->format($self->content);
+        mark_raw($html);
     },
 );
 
@@ -125,6 +139,13 @@ my $engine = Engine->new(
     title => "tokuhirom's blog",
 );
 $engine->run();
+
+sub TGP::run {
+    my $engine = Engine->new(
+        title => "tokuhirom's blog",
+    );
+    $engine->run();
+}
 
 # TODO: cache?
 # TODO: permalink
