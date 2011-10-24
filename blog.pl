@@ -12,6 +12,7 @@ use File::stat;
 use List::UtilsBy qw(rev_nsort_by);
 use Log::Minimal;
 use File::Basename qw(basename);
+use XML::Feed;
 
 our $CURRENT_TMPL;
 
@@ -48,6 +49,12 @@ has title => (
     }
 );
 
+has base => (
+    is => 'ro',
+    isa => 'Str',
+    required => 1,
+);
+
 sub git_mtime {
     # system(q[git log --name-only --date=iso --reverse --pretty=format:%at "$@" | perl -00ln -e '($d,@f)=split/\n/;$d{$_}=$d for grep{-e $_ && m{^_source}}@f' -e '}{utime undef,$d{$_},$_ for keys%d']);
 }
@@ -62,8 +69,28 @@ sub run {
         $self->render_entry($_);
     }
     $self->render_index([grep { $_ } @files[0..10]]);
+    $self->render_rss([grep { $_ } @files[0..10]]);
     # TODO: rss
     # TODO: entry page
+}
+
+sub render_rss {
+    my ($self, $entries) = @_;
+
+    infof("writing index.rss");
+    my $feed = XML::Feed->new('RSS');
+    $feed->title($self->title);
+    $feed->link($self->base);
+    for my $entry (@$entries) {
+        my $e = XML::Feed::Entry->new();
+        $e->title($entry->title);
+        $e->link($self->base . '/entry/' . $entry->moniker);
+        $e->content($entry->html);
+        $feed->add_entry($e);
+    }
+    open my $fh, '>:utf8', 'index.rss';
+    print {$fh} $feed->as_xml;
+    close $fh;
 }
 
 sub render_index {
@@ -177,12 +204,14 @@ package main;
 
 my $engine = Engine->new(
     title => "tokuhirom's blog",
+    base => 'http://tokuhirom.github.com/blog',
 );
 $engine->run();
 
 sub TGP::run {
     my $engine = Engine->new(
         title => "tokuhirom's blog",
+        base => 'http://tokuhirom.github.com/blog',
     );
     $engine->run();
 }

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rss version="2.0"
+ xmlns:blogChannel="http://backend.userland.com/blogChannelModule"
+ xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+ xmlns:content="http://purl.org/rss/1.0/modules/content/"
+ xmlns:atom="http://www.w3.org/2005/Atom"
+ xmlns:dcterms="http://purl.org/dc/terms/"
+>
+
+<channel>
+<title>tokuhirom&#x27;s blog</title>
+<link>http://tokuhirom.github.com/blog</link>
+<description></description>
+
+<item>
+<title>Perl5 module templating with Perl5
+</title>
+<link>http://tokuhirom.github.com/blog/entry/vim-perl</link>
+<guid isPermaLink="true">http://tokuhirom.github.com/blog/entry/vim-perl</guid>
+<content:encoded>&#x3C;p&#x3E;&#xE3;&#x81;&#xAA;&#xE3;&#x82;&#x93;&#xE3;&#x81;&#x8B;&#xE3;&#x81;&#x93;&#xE3;&#x82;&#x93;&#xE3;&#x81;&#xAA;&#xE3;&#x81;&#xAE;&#xE3;&#x81;&#x8B;&#xE3;&#x81;&#x84;&#xE3;&#x81;&#x9F;&#xE3;&#x80;&#x82;&#x3C;/p&#x3E;
+&#x3C;pre class=&#x22;prettyprint&#x22;&#x3E;function! s:pm_template()
+    let path = substitute(expand(&#x26;#39;%&#x26;#39;), &#x26;#39;.*lib/&#x26;#39;, &#x26;#39;&#x26;#39;, &#x26;#39;g&#x26;#39;)
+    let path = substitute(path, &#x26;#39;[\\/]&#x26;#39;, &#x26;#39;::&#x26;#39;, &#x26;#39;g&#x26;#39;)
+    let path = substitute(path, &#x26;#39;\.pm$&#x26;#39;, &#x26;#39;&#x26;#39;, &#x26;#39;g&#x26;#39;)
+
+    call append(0, &#x26;#39;package &#x26;#39; . path . &#x26;#39;;&#x26;#39;)
+    call append(1, &#x26;#39;use strict;&#x26;#39;)
+    call append(2, &#x26;#39;use warnings;&#x26;#39;)
+    call append(3, &#x26;#39;use utf8;&#x26;#39;)
+    call append(4, &#x26;#39;&#x26;#39;)
+    call append(5, &#x26;#39;&#x26;#39;)
+    call append(6, &#x26;#39;&#x26;#39;)
+    call append(7, &#x26;#39;1;&#x26;#39;)
+    call cursor(6, 0)
+    echomsg path
+endfunction
+autocmd BufNewFile *.pm call s:pm_template()&#x3C;/pre&#x3E;&#x3C;p&#x3E;&#xE3;&#x81;&#xA8;&#xE3;&#x81;&#xA6;&#xE3;&#x82;&#x82;&#xE4;&#xBE;&#xBF;&#xE5;&#x88;&#xA9;&#xE3;&#x81;&#xAA;&#xE3;&#x81;&#xAE;&#xE3;&#x81;&#xA0;&#xE3;&#x81;&#x91;&#xE3;&#x81;&#xA9;&#xE3;&#x80;&#x81;&#xE3;&#x82;&#x82;&#xE3;&#x81;&#xA3;&#xE3;&#x81;&#xA8;&#xE3;&#x81;&#x86;&#xE3;&#x81;&#xBE;&#xE3;&#x81;&#x8F;&#xE3;&#x81;&#x8B;&#xE3;&#x81;&#x91;&#xE3;&#x82;&#x8B;&#xE6;&#x96;&#xB9;&#xE6;&#xB3;&#x95;&#xE3;&#x81;&#xBE;&#xE3;&#x81;&#x9F;&#xE3;&#x81;&#xAF;&#xE6;&#x97;&#xA2;&#xE5;&#xAD;&#x98;&#xE3;&#x81;&#xAE;&#xE3;&#x82;&#xBD;&#xE3;&#x83;&#xAA;&#xE3;&#x83;&#xA5;&#xE3;&#x83;&#xBC;&#xE3;&#x82;&#xB7;&#xE3;&#x83;&#xA7;&#xE3;&#x83;&#xB3;&#xE3;&#x81;&#x8C;&#xE3;&#x81;&#x82;&#xE3;&#x82;&#x8B;&#xE6;&#xB0;&#x97;&#xE3;&#x81;&#x8C;&#xE3;&#x81;&#x97;&#xE3;&#x81;&#xA6;&#xE3;&#x81;&#xAA;&#xE3;&#x82;&#x89;&#xE3;&#x81;&#xAA;&#xE3;&#x81;&#x84;&#xE5;&#x83;&#x95;&#xE3;&#x81;&#xAA;&#xE3;&#x81;&#xAE;&#xE3;&#x81;&#xA7;&#xE3;&#x81;&#x99;&#xE3;&#x80;&#x82;&#x3C;/p&#x3E;
+</content:encoded>
+</item>
+<item>
+<title>HTML::Selector::XPath
+</title>
+<link>http://tokuhirom.github.com/blog/entry/20111024</link>
+<guid isPermaLink="true">http://tokuhirom.github.com/blog/entry/20111024</guid>
+<content:encoded>&#x3C;p&#x3E;&#x3C;a href=&#x22;https://metacpan.org/diff/release/CORION/HTML-Selector-XPath-0.09/CORION/HTML-Selector-XPath-0.10&#x22;&#x3E;https://metacpan.org/diff/release/CORION/HTML-Selector-XPath-0.09/CORION/HTML-Selector-XPath-0.10&#x3C;/a&#x3E;&#x3C;br /&#x3E;
+&#xE3;&#x81;&#xAA;&#xE3;&#x82;&#x93;&#xE3;&#x81;&#x8B; CSS3 &#xE3;&#x82;&#x82;&#xE3;&#x83;&#x91;&#xE3;&#x83;&#xBC;&#xE3;&#x82;&#xBA;&#xE3;&#x81;&#xA7;&#xE3;&#x81;&#x8D;&#xE3;&#x82;&#x8B;&#xE3;&#x82;&#x88;&#xE3;&#x81;&#x86;&#xE3;&#x82;&#x93;&#x3C;/p&#x3E;
+</content:encoded>
+</item>
+<item>
+<title>&#xE3;&#x81;&#xB6;&#xE3;&#x82;&#x8D;&#xE3;&#x81;&#x90;&#xE3;&#x81;&#xAF;&#xE3;&#x81;&#x98;&#xE3;&#x82;&#x81;&#xE3;&#x81;&#xA6;&#xE3;&#x81;&#xBF;&#xE3;&#x82;&#x8B;
+</title>
+<link>http://tokuhirom.github.com/blog/entry/test</link>
+<guid isPermaLink="true">http://tokuhirom.github.com/blog/entry/test</guid>
+<content:encoded>&#x3C;p&#x3E;Octopress &#xE3;&#x81;&#x8A;&#xE3;&#x82;&#x82;&#xE3;&#x81;&#x97;&#xE3;&#x82;&#x8D;&#xE3;&#x81;&#x84;&#xE3;&#x81;&#xAA;&#xE3;&#x83;&#xBC;&#xE3;&#x81;&#xA8;&#xE3;&#x81;&#x8A;&#xE3;&#x82;&#x82;&#xE3;&#x81;&#xA3;&#xE3;&#x81;&#x9F;&#xE3;&#x81;&#x91;&#xE3;&#x81;&#xA9;&#xE3;&#x80;&#x81;&#xE3;&#x81;&#xAA;&#xE3;&#x82;&#x93;&#xE3;&#x81;&#x8B;&#xE8;&#x87;&#xAA;&#xE5;&#x88;&#x86;&#xE3;&#x81;&#xA7;&#xE3;&#x81;&#xA4;&#xE3;&#x81;&#x8F;&#xE3;&#x81;&#xA3;&#xE3;&#x81;&#x9F;&#xE3;&#x81;&#xBB;&#xE3;&#x81;&#x86;&#xE3;&#x81;&#x8C;&#xE3;&#x81;&#x9F;&#xE3;&#x81;&#xAE;&#xE3;&#x81;&#x97;&#xE3;&#x81;&#x92;&#xE3;&#x81;&#x8B;&#xE3;&#x81;&#xAA;&#xE3;&#x83;&#xBC;&#xE3;&#x81;&#xAA;&#xE3;&#x82;&#x93;&#xE3;&#x81;&#xA6;&#xE3;&#x81;&#x8A;&#xE3;&#x82;&#x82;&#xE3;&#x81;&#xA3;&#xE3;&#x81;&#x9F;&#xE3;&#x82;&#x8A;&#xE3;&#x81;&#x97;&#xE3;&#x81;&#xA6;&#xE3;&#x81;&#x97;&#xE3;&#x81;&#xBE;&#xE3;&#x81;&#xA3;&#xE3;&#x81;&#x9F;&#xE3;&#x81;&#xAE;&#xE3;&#x81;&#xA7;&#xE3;&#x80;&#x81;&#xE8;&#x87;&#xAA;&#xE5;&#x88;&#x86;&#xE3;&#x81;&#xA7;&#xE3;&#x81;&#xA4;&#xE3;&#x81;&#x8F;&#xE3;&#x81;&#xA3;&#xE3;&#x81;&#xA6;&#xE3;&#x81;&#xBF;&#xE3;&#x82;&#x8B;&#xE3;&#x80;&#x82;&#xE8;&#x87;&#xAA;&#xE5;&#x88;&#x86;&#xE3;&#x81;&#xA7;&#xE3;&#x81;&#xA4;&#xE3;&#x81;&#x8F;&#xE3;&#x81;&#xA3;&#xE3;&#x81;&#xA6;&#xE3;&#x82;&#x8B;&#xE3;&#x81;&#x8B;&#xE3;&#x82;&#x89;&#xE3;&#x80;&#x81;&#xE3;&#x81;&#x9C;&#xE3;&#x82;&#x93;&#xE3;&#x81;&#x9C;&#xE3;&#x82;&#x93;&#xE6;&#xA9;&#x9F;&#xE8;&#x83;&#xBD;&#xE3;&#x81;&#x8C;&#xE3;&#x81;&#x9F;&#xE3;&#x82;&#x8A;&#xE3;&#x81;&#xAA;&#xE3;&#x81;&#x84;&#xE3;&#x80;&#x82;&#x3C;/p&#x3E;&#x3C;p&#x3E;&#xE3;&#x82;&#xB3;&#xE3;&#x83;&#xBC;&#xE3;&#x83;&#x89;&#xE3;&#x81;&#xAE;&#xE3;&#x83;&#x8F;&#xE3;&#x82;&#xA4;&#xE3;&#x83;&#xA9;&#xE3;&#x82;&#xA4;&#xE3;&#x83;&#x88;&#xE3;&#x81;&#xAF;&#xE3;&#x81;&#xA7;&#xE3;&#x81;&#x8D;&#xE3;&#x82;&#x8B;&#xE3;&#x82;&#x88;!&#x3C;/p&#x3E;
+&#x3C;pre class=&#x22;prettyprint lang-perl&#x22;&#x3E;local $Text::Xatena::Node::SuperPre::SUPERPRE_CLASS_NAME = &#x26;#39;prettyprint&#x26;#39;;&#x3C;/pre&#x3E;&#x3C;p&#x3E;&#xE3;&#x81;&#xA3;&#xE3;&#x81;&#xA6;&#xE3;&#x82;&#x84;&#xE3;&#x82;&#x8B;&#xE3;&#x81;&#xA8;&#xE3;&#x80;&#x81;&#xE3;&#x81;&#xAA;&#xE3;&#x82;&#x93;&#xE3;&#x81;&#x8B;&#xE3;&#x81;&#x84;&#xE3;&#x81;&#x84;&#xE3;&#x81;&#x8B;&#xE3;&#x82;&#x93;&#xE3;&#x81;&#x98;&#xE3;&#x81;&#xAB;&#xE3;&#x81;&#x97;&#xE3;&#x81;&#xA6;&#xE3;&#x81;&#x8F;&#xE3;&#x82;&#x8C;&#xE3;&#x82;&#x8B;&#xE3;&#x81;&#x93;&#xE3;&#x81;&#xA8;&#xE3;&#x81;&#xAB;&#xE3;&#x81;&#x8D;&#xE3;&#x81;&#xA5;&#xE3;&#x81;&#x84;&#xE3;&#x81;&#x9F;&#xE3;&#x81;&#xAA;&#xE3;&#x81;&#x86;&#xE3;&#x80;&#x82;&#x3C;/p&#x3E;&#x3C;p&#x3E;&#xE7;&#x84;&#xA1;&#xE9;&#xA7;&#x84;&#xE3;&#x81;&#xAB;&#xE3;&#x80;&#x81;web fonts &#xE3;&#x82;&#x92;&#xE3;&#x81;&#xA4;&#xE3;&#x81;&#x8B;&#xE3;&#x81;&#xA3;&#xE3;&#x81;&#xA6;&#xE3;&#x81;&#xBF;&#xE3;&#x81;&#x9F;&#xE3;&#x82;&#x8A;&#xE3;&#x81;&#xA8;&#xE3;&#x81;&#x8B;&#xE3;&#x80;&#x81;less &#xE3;&#x81;&#xA4;&#xE3;&#x81;&#x8B;&#xE3;&#x81;&#xA3;&#xE3;&#x81;&#x9F;&#xE3;&#x82;&#x8A;&#xE3;&#x80;&#x81;&#xE3;&#x81;&#x97;&#xE3;&#x81;&#xA6;&#xE3;&#x81;&#x84;&#xE3;&#x82;&#x8B;&#xE3;&#x80;&#x82;&#xE9;&#x85;&#x8D;&#xE8;&#x89;&#xB2;&#xE3;&#x81;&#xAF;&#xE3;&#x82;&#x8F;&#xE3;&#x81;&#x96;&#xE3;&#x81;&#xA8;&#xE3;&#x81;&#xB2;&#xE3;&#x81;&#xA9;&#xE3;&#x81;&#x84;&#xE3;&#x81;&#x8B;&#xE3;&#x82;&#x93;&#xE3;&#x81;&#x98;&#xE3;&#x81;&#xAB;&#xE3;&#x81;&#x97;&#xE3;&#x81;&#xA6;&#xE3;&#x82;&#x8B;&#xE3;&#x80;&#x82;&#xE3;&#x81;&#xAA;&#xE3;&#x82;&#x93;&#xE3;&#x81;&#xA7;&#xE3;&#x82;&#x8F;&#xE3;&#x81;&#x96;&#xE3;&#x82;&#x8F;&#xE3;&#x81;&#x96;&#xE3;&#x81;&#x9D;&#xE3;&#x81;&#x86;&#xE3;&#x81;&#x97;&#xE3;&#x81;&#xA6;&#xE3;&#x82;&#x8B;&#xE3;&#x81;&#xAE;&#xE3;&#x81;&#x8B;&#xE3;&#x81;&#xA8;&#xE3;&#x81;&#x84;&#xE3;&#x81;&#x86;&#xE3;&#x81;&#xA8;&#xE3;&#x80;&#x81;&#xE3;&#x81;&#xAA;&#xE3;&#x82;&#x93;&#xE3;&#x81;&#x8B;&#xE3;&#x81;&#x9F;&#xE3;&#x81;&#x84;&#xE3;&#x81;&#x97;&#xE3;&#x81;&#x9F;&#xE7;&#x90;&#x86;&#xE7;&#x94;&#xB1;&#xE3;&#x81;&#xA7;&#xE3;&#x81;&#xAF;&#xE3;&#x81;&#xAA;&#xE3;&#x81;&#x84;&#xE3;&#x80;&#x82;&#x3C;/p&#x3E;&#x3C;p&#x3E;RSS &#xE3;&#x81;&#xA8;&#xE3;&#x81;&#x8B;&#xE3;&#x80;&#x81;&#xE3;&#x81;&#xBE;&#xE3;&#x81;&#xA0;&#xE3;&#x81;&#xAF;&#xE3;&#x81;&#x84;&#xE3;&#x81;&#xA8;&#xE3;&#x82;&#x89;&#xE3;&#x82;&#x93;&#xE3;&#x80;&#x82;RSS &#xE3;&#x81;&#xA3;&#xE3;&#x81;&#xA6;&#xE3;&#x82;&#x82;&#xE3;&#x81;&#x86;&#xE5;&#x90;&#x90;&#xE3;&#x81;&#x8B;&#xE3;&#x81;&#xAA;&#xE3;&#x81;&#x8F;&#xE3;&#x81;&#xA6;&#xE3;&#x82;&#x82;&#xE3;&#x82;&#x88;&#xE3;&#x81;&#x8F;&#xE3;&#x81;&#xAD;?&#xE3;&#x81;&#xA6;&#xE3;&#x81;&#x84;&#xE3;&#x81;&#x86;&#xE3;&#x81;&#x8B; hAtom &#xE4;&#xB8;&#x80;&#xE5;&#xBF;&#x9C;&#xE3;&#x81;&#xAF;&#xE3;&#x81;&#x84;&#xE3;&#x81;&#xA6;&#xE3;&#x82;&#x8B;&#xE3;&#x81;&#xA4;&#xE3;&#x82;&#x82;&#xE3;&#x82;&#x8A;&#xE3;&#x81;&#xAA;&#xE3;&#x81;&#xAE;&#xE3;&#x81;&#xA7;&#xE3;&#x80;&#x81;&#xE3;&#x81;&#xAA;&#xE3;&#x82;&#x93;&#xE3;&#x81;&#x8B;&#xE3;&#x82;&#x88;&#xE3;&#x81;&#x97;&#xE3;&#x81;&#xAA;&#xE3;&#x81;&#xAB;&#xE3;&#x81;&#x97;&#xE3;&#x81;&#xA6;&#xE3;&#x81;&#x8A;&#xE3;&#x81;&#x8F;&#xE3;&#x82;&#x8C;&#xE3;&#x80;&#x82;&#x3C;/p&#x3E;&#x3C;p&#x3E;&#xE3;&#x81;&#x93;&#xE3;&#x81;&#xA1;&#xE3;&#x82;&#x89;&#xE3;&#x80;&#x81;&#xE4;&#xBB;&#x8A;&#xE5;&#xBE;&#x8C;&#xE3;&#x82;&#x82;&#xE6;&#x9B;&#xB4;&#xE6;&#x96;&#xB0;&#xE3;&#x81;&#x82;&#xE3;&#x82;&#x8B;&#xE3;&#x81;&#x8B;&#xE3;&#x81;&#xA9;&#xE3;&#x81;&#x86;&#xE3;&#x81;&#x8B;&#xE3;&#x81;&#xAF;&#xE4;&#xB8;&#x8D;&#xE6;&#x98;&#x8E;&#xE3;&#x81;&#xA7;&#xE3;&#x81;&#x99;&#xE3;&#x81;&#xAD;&#xE3;&#x80;&#x82;&#xE3;&#x81;&#x9F;&#xE3;&#x81;&#xB6;&#xE3;&#x82;&#x93;&#xE3;&#x81;&#x82;&#xE3;&#x82;&#x93;&#xE3;&#x81;&#xBE;&#xE3;&#x81;&#xA4;&#xE3;&#x81;&#xA5;&#xE3;&#x81;&#x8B;&#xE3;&#x81;&#xAA;&#xE3;&#x81;&#x84;&#xE3;&#x81;&#x8B;&#xE3;&#x82;&#x82;&#xE3;&#x81;&#xA7;&#xE3;&#x81;&#x99;&#xE3;&#x81;&#xAD;&#xE3;&#x80;&#x82;&#xE3;&#x81;&#xAF;&#xE3;&#x81;&#x84;&#xE3;&#x80;&#x82;&#xE3;&#x81;&#xAF;&#xE3;&#x81;&#xA6;&#xE3;&#x81;&#xAA;&#xE3;&#x83;&#x96;&#xE3;&#x83;&#xAD;&#xE3;&#x82;&#xB0;&#xE3;&#x81;&#xAE;&#xE5;&#x87;&#xBA;&#xE6;&#x9D;&#xA5;&#xE6;&#xAC;&#xA1;&#xE7;&#xAC;&#xAC;&#xE3;&#x81;&#xA7;&#xE3;&#x81;&#x99;&#xE3;&#x81;&#xAD;!&#x3C;/p&#x3E;
+</content:encoded>
+</item>
+</channel>
+</rss>
