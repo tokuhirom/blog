@@ -77,6 +77,7 @@ sub run {
 sub render_rss {
     my ($self, $entries) = @_;
 
+    local $XML::Feed::Format::RSS::PREFERRED_PARSER = "XML::RSS::LibXML";
     infof("writing index.rss");
     my $feed = XML::Feed->new('RSS');
     $feed->title($self->title);
