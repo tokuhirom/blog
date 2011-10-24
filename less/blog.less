@@ -1,4 +1,5 @@
 .entry {
+    width: 100%;
     .mtime {
         color: #aaaaaa;
         float: right;
@@ -21,10 +22,34 @@ h1 {
 }
 
 body {
-    background-color: #FF22C3;
+    background-color: #FFddC3;
+    background-image: linear-gradient(bottom, rgb(239,83,198) 26%, rgb(115,65,115) 12%);
+    background-image: -o-linear-gradient(bottom, rgb(239,83,198) 26%, rgb(115,65,115) 12%);
+    background-image: -moz-linear-gradient(bottom, rgb(239,83,198) 26%, rgb(115,65,115) 12%);
+    background-image: -webkit-linear-gradient(bottom, rgb(239,83,198) 26%, rgb(115,65,115) 12%);
+    background-image: -ms-linear-gradient(bottom, rgb(239,83,198) 26%, rgb(115,65,115) 12%);
+
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0.26, rgb(239,83,198)),
+        color-stop(0.12, rgb(115,65,115))
+    );
+
+
     height: 100%;
     min-height: 100%;
     height:auto !important;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+header {
+    a, a:hover {
+        text-decoration: none;
+        color: yellow;
+    }
 }
 
 .clearfix:after {  

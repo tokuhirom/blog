@@ -22,7 +22,7 @@
 <body>
 <div class="container-fluid">
     <header>
-        <h1>[% c.title %]</h1>
+        <h1><a href="[% uri_for('./') %]">[% c.title %]</a></h1>
     </header>
     <div class="sidebar">
         <ul>
