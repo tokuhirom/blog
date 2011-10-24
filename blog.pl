@@ -89,7 +89,7 @@ sub render_rss {
         $e->content($entry->html);
         $feed->add_entry($e);
     }
-    open my $fh, '>:utf8', 'index.rss';
+    open my $fh, '>', 'index.rss';
     print {$fh} $feed->as_xml;
     close $fh;
 }
