@@ -47,6 +47,42 @@
 </section>
 
     
+        <section class="entry clearfix hentry">
+    <h1 class="entry-title"><a href="entry/20111024.html">HTML::Selector::XPath
+</a></h1>
+    <div class="entry-content"><p><a href="https://metacpan.org/diff/release/CORION/HTML-Selector-XPath-0.09/CORION/HTML-Selector-XPath-0.10">https://metacpan.org/diff/release/CORION/HTML-Selector-XPath-0.09/CORION/HTML-Selector-XPath-0.10</a><br />
+なんか CSS3 もパーズできるようん</p>
+</div>
+    <span class="updated mtime"><a class="bookmark" rel="bookmark" href="entry/20111024.html">2011-10-24(Mon) 08:54</a></span>
+</section>
+
+    
+        <section class="entry clearfix hentry">
+    <h1 class="entry-title"><a href="entry/vim-perl.html">Perl5 module templating with Perl5
+</a></h1>
+    <div class="entry-content"><p>なんかこんなのかいた。</p>
+<pre class="prettyprint">function! s:pm_template()
+    let path = substitute(expand(&#39;%&#39;), &#39;.*lib/&#39;, &#39;&#39;, &#39;g&#39;)
+    let path = substitute(path, &#39;[\\/]&#39;, &#39;::&#39;, &#39;g&#39;)
+    let path = substitute(path, &#39;\.pm$&#39;, &#39;&#39;, &#39;g&#39;)
+
+    call append(0, &#39;package &#39; . path . &#39;;&#39;)
+    call append(1, &#39;use strict;&#39;)
+    call append(2, &#39;use warnings;&#39;)
+    call append(3, &#39;use utf8;&#39;)
+    call append(4, &#39;&#39;)
+    call append(5, &#39;&#39;)
+    call append(6, &#39;&#39;)
+    call append(7, &#39;1;&#39;)
+    call cursor(6, 0)
+    echomsg path
+endfunction
+autocmd BufNewFile *.pm call s:pm_template()</pre><p>とても便利なのだけど、もっとうまくかける方法または既存のソリューションがある気がしてならない僕なのです。</p>
+</div>
+    <span class="updated mtime"><a class="bookmark" rel="bookmark" href="entry/vim-perl.html">2011-10-25(Tue) 08:11</a></span>
+</section>
+
+    
 
 
     </div>
