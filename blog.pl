@@ -9,7 +9,7 @@ use Text::Xslate;
 use Text::Xslate::Bridge::TT2Like;
 use autodie ':all';
 use File::stat;
-use List::UtilsBy qw(nsort_by);
+use List::UtilsBy qw(rev_nsort_by);
 use Log::Minimal;
 use File::Basename qw(basename);
 
@@ -56,7 +56,7 @@ sub run {
     my $self = shift;
     $self->git_mtime();
 
-    my @files = nsort_by { $_->ctime } map { Entry->new(file => $_) } glob('_source/*.txt');
+    my @files = rev_nsort_by { $_->ctime } map { Entry->new(file => $_) } glob('_source/*.txt');
 
     for (@files) {
         $self->render_entry($_);
@@ -119,6 +119,13 @@ has mtime_piece => (
     is => 'ro',
     default => sub {
         Time::Piece->new(shift->mtime)
+    },
+    lazy => 1,
+);
+has ctime_piece => (
+    is => 'ro',
+    default => sub {
+        Time::Piece->new(shift->ctime)
     },
     lazy => 1,
 );
